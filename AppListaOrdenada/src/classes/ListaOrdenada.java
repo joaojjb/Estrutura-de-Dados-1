@@ -1,3 +1,5 @@
+package classes;
+
 public class ListaOrdenada {
     private int ultimo;
     private int maxTam;
@@ -108,8 +110,8 @@ public class ListaOrdenada {
         String aux = "";
 
         for(int i = 0; i < ultimo; i++){
-            adress = this.vetor[i].getAdress();
-            name = this.vetor[i].getName();
+            adress = this.vetor[i].getEndereco();
+            name = this.vetor[i].getNome();
             cpf = this.vetor[i].getCpf();
             aux = aux + name + "    " + cpf + "    " + adress + "   \n";
                 

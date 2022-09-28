@@ -1,5 +1,8 @@
 import java.util.Scanner;
-public class App {
+import classes.Contato;
+import classes.ListaOrdenada;
+
+public class TestaLista {
     public static Scanner input = new Scanner(System.in);
 
     public static Contato criarContato(){
@@ -10,7 +13,7 @@ public class App {
         System.out.print("Insira seu nome: ");
         name = input.next();
         input.reset();
-        contato.setName(name);
+        contato.setNome(name);
 
         System.out.print("Insira seu cpf: ");
         cpf = input.nextLong();
@@ -18,7 +21,7 @@ public class App {
 
         System.out.print("Insira seu endereço: ");
         adress = input.next();
-        contato.setAdress(adress);
+        contato.setEndereco(adress);
 
         return contato;
     }
@@ -62,7 +65,7 @@ public class App {
                     contato = lista.retiraLista(contato);
 
                     if(contato != null){
-                        System.out.println("Nome: " + contato.getName() + " " + "Endereço: " + contato.getAdress() + " " + "CPF: " + contato.getCpf());
+                        System.out.println("Nome: " + contato.getNome() + " " + "Endereço: " + contato.getEndereco() + " " + "CPF: " + contato.getCpf());
                     } else{
                         System.out.println("Esse contato não existe !");
                     }
