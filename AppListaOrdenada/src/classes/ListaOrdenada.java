@@ -1,3 +1,5 @@
+package classes;
+
 public class ListaOrdenada {
     private int ultimo;
     private int maxTam;
@@ -9,15 +11,24 @@ public class ListaOrdenada {
         this.vetor = null;
     }
 
-    public int getMaxTam() {
-        return maxTam;
+    public boolean listaVazia(){
+        if(ultimo == 0) return true;
+
+        return false;
     }
     
+    public boolean listaCheia(){
+        if(ultimo == maxTam) return true;
+
+        return false;
+    }
+
     public boolean setMaxTam(int maxTam) {
         if(maxTam < 2){
             System.out.println("Lista muito pequena");
              return false;
         }
+
         this.maxTam = maxTam;
         this.vetor = new Contato[this.maxTam];
        
@@ -25,30 +36,42 @@ public class ListaOrdenada {
         
     }
 
-
-    public boolean listaVazia(){
-        if(ultimo == 0) return true;
-
-        return false;
+    public int getMaxTam() {
+        return maxTam;
     }
 
-    public boolean listaCheia(){
-        if(ultimo == maxTam) return true;
-
-        return false;
-    }
-
-    //Não é mais insere final, é insere na posição odernada pelo cpf, do menor para o maior;
-    //Conferir pelo cpf, enquanto for maior, vai para a próxima casinha, se for menor, insere ela na posição anterior;
     public boolean insereOrdenado(Contato contato){
+        int pos = 0;
         if(listaCheia()){
             System.out.println("A lista está cheia !"); 
             return false;
         } 
 
-        vetor[ultimo] = contato;
-        ultimo++;
-        return true;
+        if(ultimo == 0){
+            vetor[0] = contato;
+            ultimo++;
+            return true;
+        } 
+        
+        for(int i = 0; i < vetor.length; i++){
+            if(vetor[i] == null){
+                vetor[i] = contato;
+                ultimo++;
+                return true;
+            } else {
+                if(contato.getCpf() < vetor[i].getCpf()){
+                    pos = i;
+                    
+                    for(int j = ultimo; j > pos; j--){
+                        vetor[j] = vetor[j - 1];
+                    }
+                    vetor[pos] = contato;
+                    ultimo++;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public Contato search(Contato contato){
@@ -65,12 +88,7 @@ public class ListaOrdenada {
             
 
     public Contato retiraLista(Contato contato){
-        
         Contato [] vetor = this.vetor;
-
-        //Jogando para o metodo achar, para ver se existe.
-
-
         if(listaVazia()) return null;
         contato = search(contato);
         if(contato == null) return null;
@@ -85,19 +103,20 @@ public class ListaOrdenada {
         ultimo--;
         return contato;
     }
-        public String getLista(){
-            String name, adress;
-            long cpf;
-            String aux = "";
 
-            for(int i = 0; i < ultimo ; i++){
-                adress = this.vetor[i].getAdress();
-                name = this.vetor[i].getName();
-                cpf = this.vetor[i].getCpf();
-                aux = aux + name + "    " + cpf + "    " + adress + "   \n";
+    public String getLista(){
+        String name, adress;
+        long cpf;
+        String aux = "";
+
+        for(int i = 0; i < ultimo; i++){
+            adress = this.vetor[i].getEndereco();
+            name = this.vetor[i].getNome();
+            cpf = this.vetor[i].getCpf();
+            aux = aux + name + "    " + cpf + "    " + adress + "   \n";
                 
-            }
-             return aux;   
+        }
+            return aux;   
         
         
     }
