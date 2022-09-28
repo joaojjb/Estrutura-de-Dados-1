@@ -5,7 +5,7 @@ public class Contato {
     private Contato contato;
 
     
-    public Contato(String name, String adress, long cpf) {
+    public Contato(String name,String adress,long cpf) {
         this.name = name;
         this.adress = adress;
         this.cpf = cpf;
@@ -18,7 +18,6 @@ public class Contato {
         this.cpf = 0;
         this.contato = null;
     }
-
 
     public String getContato(){
         return this.contato.toString();
@@ -46,10 +45,4 @@ public class Contato {
     public void setAdress(String adress) {
         this.adress = adress;
     }
-
-
-
-
-
-
 }
