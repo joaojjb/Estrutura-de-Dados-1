@@ -28,8 +28,8 @@ public class Pilha {
 
     public void push(Livro x) {
         No aux = new No(x);
-        aux.prox = topo;
-        topo = aux;
+        aux.prox = topo; // E o proximo que também é um Nó, faz referência à o anterior, sempre o anterior, isso em pilha e fila funciona mas e no restante?
+        topo = aux; // O topo sempre faz referência para o último Nó instânciado.
         qde++;
     }
 
