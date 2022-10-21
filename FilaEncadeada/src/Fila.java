@@ -21,25 +21,29 @@ public class Fila {
         }
 
         public void enfileirar(Cliente cliente) {
+
             No aux = new No(cliente);
             if (vazia()) {
-                inicio = aux;
+                inicio  = aux;
                 fim = aux;
-                aux.ant = null;
+                aux = null;
                 tam++;
             }
-            fim.ant = aux;
-            fim = aux;
-            aux.ant = null;
-            tam++;
+            else{
+                fim.ant = aux;
+                fim = aux;
+                tam++;
+            }
+           
         }
 
     public Cliente desenfileirar(){
         if(vazia()){
             return null;
         } 
-        No aux = new No(inicio.dados);
+        No aux = inicio;
         inicio = aux.ant;
+        tam--;
         return aux.dados;
     }
 }

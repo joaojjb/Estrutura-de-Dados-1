@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class App {
+public class Base {
     static Scanner leia = new Scanner(System.in);
 
     static Cliente obtemLCliente() {
@@ -21,26 +21,26 @@ public class App {
         int op;
         do {
             System.out.println("Digite:");
-            System.out.println("1 - para empilhar.");
-            System.out.println("2 - para desempilhar.");
+            System.out.println("1 - Para enfileirar.");
+            System.out.println("2 - Para desenfileirar.");
             System.out.println("3 - para sair.");
             op = leia.nextInt();
             switch (op) {
-                case 1: // empilhar
+                case 1: // enfileirar
                     cliente = obtemLCliente();
                     fila.enfileirar(cliente);
-                    System.out.println(fila.getQde() + " Livros.");
-                    liv = null;
+                    System.out.println(fila.getTamanho() + " Clientes.");
+                    cliente = null;
                     break;
-                case 2: // desempilhar
-                    liv = p.pop();
-                    if (liv == null)
-                        System.out.println("Pilha vazia.");
+                case 2: // desenfileirar
+                cliente = fila.desenfileirar();
+                    if (cliente == null)
+                        System.out.println("Fila vazia.");
                     else {
-                        System.out.println(liv.getLivro());
-                        System.out.println(p.getQde() + " Livros.");
+                        System.out.println(cliente.getCliente());
+                        System.out.println(fila.getTamanho() + " Clientes.");
                     }
-                    liv = null;
+                    cliente = null;
                     break;
                 case 3: // sair
                     System.out.println("Saindo.");
@@ -49,8 +49,7 @@ public class App {
                     System.out.println("Opção inválida.");
             }
         } while (op != 3);
+    }
+}
+    
 
-    }
-}
-    }
-}
