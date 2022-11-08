@@ -14,26 +14,38 @@ public class Lista {
 
     public void inserirInicio(ItemCompra itemCompra){
         No aux = new No(itemCompra);
-
-        if(vazia()){
-            primeiro = aux;
-            qde++;
-            aux = null;
-        } else {
-            aux.proximo = primeiro;
-            primeiro = aux;
-            qde++;
-            aux = null;
-        }
-
-        
-        
+        aux.proximo = primeiro;
+        primeiro = aux;
+        qde++;
     }
 
     public ItemCompra retirar(ItemCompra itemCompra){
-        
+        if(vazia()) return null;
 
-        return itemCompra;
+        No noAux = primeiro;
+        No noAnt = primeiro;
+        ItemCompra auxItemCompra = noAux.dados;
+        for(int i = 0; i < qde; i++){
+            if(noAux != null && itemCompra.getDescricao().equals(noAux.dados.getDescricao())){
+                auxItemCompra = noAux.dados;
+                //retirada caso sja o primeiro Nó;
+                if(i == 0){
+                    primeiro = noAux.proximo;
+                //retirada caso não seja o último nem o primeiro.
+                }else if(noAux.proximo != null){
+                    noAnt.proximo = noAux.proximo;
+                //retirada caso seja o último
+                }else{
+                    noAnt.proximo = null;
+                }
+                qde--;
+                return auxItemCompra;
+            } else {
+                noAnt = noAux;
+                noAux = noAux.proximo;
+            }
+        }
+        return null;
     }
 
     public ItemCompra buscar(ItemCompra itemCompra) {
@@ -63,7 +75,14 @@ public class Lista {
     }
 
     public String getLista(){
-        //TODO
+        No auxNo = primeiro;
+        String listaConcatenada = "";
+        for(int i = 0; i < qde; i++){
+            listaConcatenada+= "\n " + auxNo.dados.getItemCompra() + "\n\n ";
+            auxNo = auxNo.proximo;
+        }
+
+        return listaConcatenada;
     }
 }
 

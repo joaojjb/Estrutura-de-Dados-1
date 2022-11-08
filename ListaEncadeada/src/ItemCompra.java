@@ -11,13 +11,12 @@ public class ItemCompra {
 
     public boolean setQde(int qde){
         if(qde <= 0) return false;
-        //TODO
+    
         return true;
     }
 
     public boolean setPreco(double preco){
         if(preco < 0.0) return false;
-        //TODO
         return true;
     }
 
@@ -29,9 +28,17 @@ public class ItemCompra {
         return this.descricao;
     }
 
+    public int getQde() {
+        return qde;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
     public String getItemCompra(){
-        //TODO
-        return "Item Compra inteiro";
+    
+        return "Descrição: " + getDescricao() + "\n Quantidade: " + getQde() + " Preço: " + getPreco();
     }
 
  
