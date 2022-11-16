@@ -38,7 +38,7 @@ public class ItemCompra {
 
     public String getItemCompra(){
     
-        return "Descrição: " + getDescricao() + "\n Quantidade: " + getQde() + " Preço: " + getPreco();
+        return "Descrição: " + getDescricao() + "\n Quantidade: " + getQde() + " Preço: R$: " + getPreco();
     }
 
  
